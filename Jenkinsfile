@@ -6,8 +6,8 @@ node {
       println('so far so good...')
     }
     stage('test') {
-      println('A test has failed!')
-      sh 'exit 1'
+      println('A test success!')
+      slackSend (color: '#00FFF0', message: "Good news: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
     }
   } catch(e) {
     // mark build as failed
